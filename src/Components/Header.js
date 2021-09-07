@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import NavbarCustom from './NavbarCustom';
 
 class Header extends Component {
     render() {
         return (
-            <>
-                <h1>Welcome To My First React App</h1>;
-            </>
+           <NavbarCustom/>
         )
     }
 }
