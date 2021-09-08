@@ -4,7 +4,7 @@ import NavbarCustom from './NavbarCustom';
 class Header extends Component {
     render() {
         return (
-           <NavbarCustom/>
+            <NavbarCustom />
         )
     }
 }

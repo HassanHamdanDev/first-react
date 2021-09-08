@@ -4,6 +4,7 @@ import Main from "./Components/Main";
 import Footer from "./Components/Footer";
 import SelectedBeast from "./Components/SelectedBeast";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import data from './Components/data.json';
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +14,9 @@ class App extends Component {
       title: "",
       image_url: "",
       description: "",
-      horns: 0
+      horns: 0,
+      filterCard: false,
+      filteredData: []
     }
   }
   handleClose = () => {
@@ -30,11 +33,30 @@ class App extends Component {
       horns: horns
     })
   }
+  handleHornsSelect = (event) => {
+    let horns = event.target.value;
+    this.setState({
+      horns: horns,
+      filteredData: data.filter(elem => elem.horns == horns)
+    })
+  }
+  handleHornsSubmit = (event) => {
+    event.preventDefault();
+    this.setState({
+      filterCard: true,
+    })
+  }
   render() {
     return (
       <>
         <Header />
-        <Main handleOpen={this.handleOpen} />
+        <Main
+          handleOpen={this.handleOpen}
+          handleHornsSelect={this.handleHornsSelect}
+          handleHornsSubmit={this.handleHornsSubmit}
+          filterCard={this.state.filterCard}
+          filteredData={this.state.filteredData}
+        />
         <SelectedBeast
           handleClose={this.handleClose}
           showModal={this.state.showModal}
