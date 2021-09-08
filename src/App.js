@@ -37,7 +37,7 @@ class App extends Component {
     let horns = event.target.value;
     this.setState({
       horns: horns,
-      filteredData: data.filter(elem => elem.horns == horns)
+      filteredData: data.filter(elem => elem.horns === Number(horns))
     })
   }
   handleHornsSubmit = (event) => {
